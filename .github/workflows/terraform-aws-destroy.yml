@@ -32,24 +32,21 @@ jobs:
     - name: Terraform Validate
       run: terraform validate
 
-    # Import resources first (state creation)
     - name: Import Terraform Resources
       run: |
-        echo "Reading instance IDs from terraform.tfvars"
+        terraform console <<EOF > ids.txt
+        [for v in var.vm_details : v.vm_id]
+        EOF
 
-        # Extract only vm_id values
-        IDS=$(grep 'vm_id' terraform.tfvars | awk -F'"' '{print $2}')
-
-        echo "Found instance IDs:"
-        echo "$IDS"
+        IDS=$(grep -o 'i-[a-zA-Z0-9]*' ids.txt)
 
         count=0
         for id in $IDS
         do
-          echo "Importing $id"
           terraform import aws_instance.vm[$count] $id || true
           count=$((count+1))
         done
+
 
     # Then destroy
     - name: Terraform Destroy
