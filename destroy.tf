@@ -1,3 +1,7 @@
+variable "ami_id" {
+  default = "ami-0030e4319cbf4dbf2"
+}
+
 resource "aws_instance" "vm" {
   count = length(var.instance_ids_to_destroy)
 
