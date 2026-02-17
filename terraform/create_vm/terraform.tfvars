@@ -3,3 +3,5 @@ instance_ids_to_destroy = [
 ]
 
 instance_type = "t3.micro"
+
+vm_count = 5
