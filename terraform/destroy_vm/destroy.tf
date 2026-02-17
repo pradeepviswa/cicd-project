@@ -1,11 +1,8 @@
-variable "ami_id" {
-  default = "ami-0030e4319cbf4dbf2"
-}
-
 resource "aws_instance" "vm" {
-  count = length(var.instance_ids_to_destroy)
+  count = length(var.vm_details)
 
-  ami           = var.ami_id
+  # take AMI from each object
+  ami           = var.vm_details[count.index].ami
   instance_type = var.instance_type
 
   lifecycle {
