@@ -35,6 +35,9 @@ jobs:
     - name: Terraform Init
       run: terraform init
 
+    - name: Terraform Load Variables
+      run: terraform plan -var-file="terraform.tfvars"
+
     - name: Terraform Validate
       run: terraform validate
 
@@ -54,8 +57,6 @@ jobs:
       if: ${{ github.event.inputs.action == 'destroy' }}
       run: terraform destroy -auto-approve
 
-    - name: Terraform Load Variables
-      run: terraform plan -var-file="terraform.tfvars"
 
     - name: Import Terraform Resources
       if: ${{ github.event.inputs.action == 'destroy' }}
