@@ -1,14 +1,20 @@
-name: Terraform AWS Deploy
+name: Terraform AWS Deploy or Destroy
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+    inputs:
+      action:
+        description: "Choose Terraform action"
+        required: true
+        default: apply
+        type: choice
+        options:
+          - apply
+          - destroy
 
 jobs:
   terraform:
-    name: Terraform Apply
+    name: Terraform Run
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +39,13 @@ jobs:
       run: terraform validate
 
     - name: Terraform Plan
+      if: ${{ github.event.inputs.action == 'apply' }}
       run: terraform plan
 
     - name: Terraform Apply
+      if: ${{ github.event.inputs.action == 'apply' }}
       run: terraform apply -auto-approve
+
+    - name: Terraform Destroy
+      if: ${{ github.event.inputs.action == 'destroy' }}
+      run: terraform destroy -auto-approve
