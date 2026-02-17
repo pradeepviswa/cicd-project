@@ -14,7 +14,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "example" {
+resource "aws_instance" "new_vm" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
@@ -25,7 +25,7 @@ resource "aws_instance" "example" {
 
 output "vm_details" {
   value = {
-    vm_id = aws_instance.example.id
-    ami   = aws_instance.example.ami
+    vm_id = aws_instance.new_vm.id
+    ami   = aws_instance.new_vm.ami
   }
 }
