@@ -10,7 +10,7 @@ jobs:
     defaults:
       run:
         working-directory: terraform/destroy_vm
-        
+
     steps:
 
     - name: Checkout code
@@ -37,7 +37,11 @@ jobs:
       run: |
         echo "Reading instance IDs from terraform.tfvars"
 
-        IDS=$(grep -o 'i-[a-zA-Z0-9]*' terraform.tfvars)
+        # Extract only vm_id values
+        IDS=$(grep 'vm_id' terraform.tfvars | awk -F'"' '{print $2}')
+
+        echo "Found instance IDs:"
+        echo "$IDS"
 
         count=0
         for id in $IDS
