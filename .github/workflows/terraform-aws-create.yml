@@ -7,7 +7,10 @@ jobs:
   terraform:
     name: Terraform Create
     runs-on: ubuntu-latest
-
+    defaults:
+      run:
+        working-directory: terraform/create_vm
+        
     steps:
 
     - name: Checkout code
