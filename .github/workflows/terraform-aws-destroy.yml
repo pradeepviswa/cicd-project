@@ -34,11 +34,12 @@ jobs:
 
     # Import resources first (state creation)
     - name: Import Terraform Resources
+      working-directory: terraform/destroy_vm
       run: |
         echo "Reading instance IDs from terraform.tfvars"
 
-        # Extract only vm_id values
-        IDS=$(grep 'vm_id' terraform.tfvars | awk -F'"' '{print $2}')
+        # Extract only vm_id VALUES (instance IDs)
+        IDS=$(grep 'vm_id' ../create_vm/terraform.tfvars | awk -F'"' '{print $4}')
 
         echo "Found instance IDs:"
         echo "$IDS"
@@ -50,6 +51,7 @@ jobs:
           terraform import aws_instance.vm[$count] $id || true
           count=$((count+1))
         done
+
 
 
     # Then destroy
