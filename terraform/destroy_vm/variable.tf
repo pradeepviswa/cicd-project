@@ -4,3 +4,7 @@ variable "instance_ids_to_destroy" {
   default     = []
 }
 
+variable "instance_type" {
+  description = "Instance type"
+  type        = string
+}
