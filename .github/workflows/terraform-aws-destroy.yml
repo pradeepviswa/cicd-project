@@ -39,7 +39,7 @@ jobs:
         echo "Reading instance IDs from terraform.tfvars"
 
         # Extract only vm_id VALUES (instance IDs)
-        IDS=$(grep 'vm_id' ../create_vm/terraform.tfvars | awk -F'"' '{print $4}')
+        IDS=$(grep 'vm_id' ./terraform.tfvars | awk -F'"' '{print $4}')
 
         echo "Found instance IDs:"
         echo "$IDS"
