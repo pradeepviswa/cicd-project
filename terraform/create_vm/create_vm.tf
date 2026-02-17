@@ -27,8 +27,9 @@ resource "aws_instance" "new_vm" {
 output "vm_details" {
   value = [
     for vm in aws_instance.new_vm : {
-      vm_id = vm.id
-      ami   = vm.ami
+      vm_id     = vm.id
+      ami       = vm.ami
+      public_ip = vm.public_ip
     }
   ]
 }

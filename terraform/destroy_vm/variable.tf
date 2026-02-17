@@ -1,8 +1,9 @@
 variable "vm_details" {
   description = "List of VM details to destroy"
   type = list(object({
-    ami   = string
-    vm_id = string
+    ami       = string
+    vm_id     = string
+    public_ip = string
   }))
 }
 
