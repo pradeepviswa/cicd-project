@@ -23,6 +23,9 @@ resource "aws_instance" "example" {
   }
 }
 
-output "vm_ids" {
-  value = aws_instance.example.id
+output "vm_details" {
+  value = {
+    vm_id = aws_instance.example.id
+    ami   = aws_instance.example.ami
+  }
 }
