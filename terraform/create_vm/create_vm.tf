@@ -15,6 +15,7 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "new_vm" {
+  count         = var.vm_count
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
 
@@ -24,8 +25,10 @@ resource "aws_instance" "new_vm" {
 }
 
 output "vm_details" {
-  value = {
-    vm_id = aws_instance.new_vm.id
-    ami   = aws_instance.new_vm.ami
-  }
+  value = [
+    for vm in aws_instance.new_vm : {
+      vm_id = vm.id
+      ami   = vm.ami
+    }
+  ]
 }
