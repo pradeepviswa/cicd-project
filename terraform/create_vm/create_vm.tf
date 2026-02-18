@@ -1,3 +1,4 @@
+
 data "aws_ami" "ubuntu" {
   most_recent = true
 
@@ -18,6 +19,7 @@ resource "aws_instance" "new_vm" {
   count         = var.vm_count
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
+  key_name      = var.key_name
 
   tags = {
     Name = "HelloWorld-${count.index}"
