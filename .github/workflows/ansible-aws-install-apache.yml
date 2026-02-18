@@ -1,4 +1,4 @@
-name: Terraform AWS Destroy VM
+name: Ansible Install Apache2
 
 on:
   workflow_dispatch:
