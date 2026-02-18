@@ -9,3 +9,9 @@ variable "vm_count" {
   type        = number
   default     = 1
 }
+
+variable "key_name" {
+  description  = "key name already present in aws"
+  type         = string
+  default      = "key1"
+}
