@@ -4,28 +4,17 @@ instance_type = "t3.micro"
 vm_details = [
   {
     "ami" = "ami-0030e4319cbf4dbf2"
-    "public_ip" = "18.212.5.106"
-    "vm_id" = "i-014ee73357ab437f6"
+    "public_ip" = "3.92.27.111"
+    "vm_id" = "i-013739cd42abe1593"
   },
   {
     "ami" = "ami-0030e4319cbf4dbf2"
-    "public_ip" = "52.207.82.152"
-    "vm_id" = "i-0c346ec5d6c778bfe"
+    "public_ip" = "34.228.156.117"
+    "vm_id" = "i-004d9dff73839f235"
   },
   {
     "ami" = "ami-0030e4319cbf4dbf2"
-    "public_ip" = "3.88.252.165"
-    "vm_id" = "i-0515d5f36e781aa40"
-  },
-  {
-    "ami" = "ami-0030e4319cbf4dbf2"
-    "public_ip" = "44.202.139.98"
-    "vm_id" = "i-0fcc96b95f9c2fa8a"
-  },
-  {
-    "ami" = "ami-0030e4319cbf4dbf2"
-    "public_ip" = "44.211.46.132"
-    "vm_id" = "i-0252bc1e847ddf0f1"
+    "public_ip" = "50.17.62.204"
+    "vm_id" = "i-069c3ef897ecb5812"
   },
 ]
-
