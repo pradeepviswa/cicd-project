@@ -1,0 +1,7 @@
+- name: Install apache2 playbook
+  become: yes
+  hosts: all
+  tasks:
+  - name: Welcome Message
+    debug:
+      msg: "Hello world"
