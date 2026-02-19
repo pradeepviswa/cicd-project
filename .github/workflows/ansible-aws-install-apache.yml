@@ -18,11 +18,6 @@ jobs:
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > key1.pem
           chmod 600 key1.pem
-      - name: print key.pem file content
-        run: cat key1.pem
 
-      # - name: Terraform Apply
-      #   run: terraform apply -auto-approve
-
-      # - name: Run Ansible
-      #   run: ansible-playbook -i inventory.ini setup.yml --private-key key1.pem
+      - name: Run Ansible
+        run: ansible-playbook -i hosts mainl.yml --private-key key1.pem
