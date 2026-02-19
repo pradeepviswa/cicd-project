@@ -1,6 +1,7 @@
 - name: Install apache2 playbook
   become: yes
   hosts: all
+  gather_facts: no
   tasks:
   - name: Welcome Message
     debug:
