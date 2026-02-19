@@ -6,3 +6,6 @@
   - name: Welcome Message
     debug:
       msg: "Hello world"
+
+  roles:
+    - apache-install
