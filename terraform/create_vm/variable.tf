@@ -15,3 +15,8 @@ variable "key_name" {
   type         = string
   default      = "key1"
 }
+
+variable "allowed_ports" {
+  type    = list(number)
+  default = [22, 8080, 3000]
+}
