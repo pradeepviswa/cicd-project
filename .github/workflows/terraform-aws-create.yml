@@ -62,15 +62,16 @@ jobs:
         echo "Generated inventory:"
         cat ../ansible/hosts
 
-      - name: Create SSH key
-        working-directory: ./ansible
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > key1.pem
-          chmod 600 key1.pem
 
-      - name: Run Ansible
-        working-directory: ./ansible
-        run: ansible-playbook -i hosts main.yml
+    # Create SSH key
+    - name: Create SSH key
+      working-directory: ./ansible
+      run: |
+        echo "${{ secrets.SSH_PRIVATE_KEY }}" > key1.pem
+        chmod 600 key1.pem
 
-
-        
+    # Run Ansible
+    - name: Run Ansible
+      working-directory: ./ansible
+      run: ansible-playbook -i hosts main.yml
+      
