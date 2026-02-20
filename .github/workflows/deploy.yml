@@ -1,0 +1,12 @@
+name: Deploy EC2 and Configure Apache
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create-ec2:
+    uses: ./.github/workflows/terraform-ec2.yml
+
+  install-apache:
+    needs: create-ec2
+    uses: ./.github/workflows/ansible-apache.yml
