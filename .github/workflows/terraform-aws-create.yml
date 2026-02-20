@@ -1,7 +1,8 @@
 name: Terraform AWS Create VM
 
 on:
-  workflow_dispatch:
+  workflow_call:
+  # workflow_dispatch:
 
 jobs:
   terraform:
@@ -37,3 +38,28 @@ jobs:
 
     - name: Terraform Apply
       run: terraform apply -auto-approve -var-file="terraform.tfvars"
+
+
+    # Get public IPs from terraform
+    - name: Get Public IPs
+      id: tf_output
+      run: |
+        IPS=$(terraform output -json public_ips | jq -r '.[]')
+        echo "IPS=$IPS" >> $GITHUB_ENV
+
+    # Create Ansible inventory file
+    - name: Create Ansible Hosts File
+      run: |
+        mkdir -p ../ansible
+
+        echo "[web]" > ../ansible/hosts
+
+        for ip in $IPS
+        do
+          echo "$ip ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/id_rsa" >> ../ansible/hosts
+        done
+
+        echo "Generated inventory:"
+        cat ../ansible/hosts
+
+        

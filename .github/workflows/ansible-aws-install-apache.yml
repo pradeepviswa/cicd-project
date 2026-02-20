@@ -1,7 +1,7 @@
 name: Ansible Install Apache2
 
 on:
-  workflow_dispatch:
+  workflow_call:
 
 jobs:
   terraform:
@@ -20,4 +20,4 @@ jobs:
           chmod 600 key1.pem
 
       - name: Run Ansible
-        run: ansible-playbook -i hosts main.yml --private-key key1.pem
+        run: ansible-playbook -i hosts main.yml
