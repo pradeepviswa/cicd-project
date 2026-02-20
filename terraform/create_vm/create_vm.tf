@@ -70,7 +70,6 @@ output "vm_details" {
       vm_id     = vm.id
       ami       = vm.ami
       public_ip = vm.public_ip
-      vpc_security_group_ids = [aws_security_group.web_sg.id]
     }
   ]
 }
