@@ -73,3 +73,8 @@ output "vm_details" {
     }
   ]
 }
+
+output "public_ips" {
+  description = "Public IPs of created EC2 instances"
+  value       = aws_instance.new_vm[*].public_ip
+}
