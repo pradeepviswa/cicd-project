@@ -1,4 +1,4 @@
-name: Terraform AWS Create VM
+name: Terraform AWS Create VM New
 
 on:
   workflow_call:
