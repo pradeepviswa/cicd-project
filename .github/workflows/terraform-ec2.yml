@@ -1,17 +1,18 @@
-name: Terraform EC2 Create
+name: Terraform AWS Create VM
 
 on:
-  workflow_call:   # makes it reusable
+  workflow_call:
 
 jobs:
   terraform:
+    name: Terraform Create
     runs-on: ubuntu-latest
-
     defaults:
       run:
         working-directory: terraform/create_vm
-
+        
     steps:
+
     - name: Checkout code
       uses: actions/checkout@v4
 
