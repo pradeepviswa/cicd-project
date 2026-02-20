@@ -17,6 +17,7 @@ variable "key_name" {
 }
 
 variable "allowed_ports" {
-  type    = list(number)
-  default = [22, 8080, 3000]
+  description = "List of ports to allow"
+  type        = list(number)
+  default     = [22, 80]   # SSH + HTTP (you can change anytime)
 }

@@ -1,14 +1,17 @@
-data "aws_vpc" "default" {
-  default = true
-}
 
-resource "aws_security_group" "my_sg" {
-  name   = "my-sg"
-  vpc_id = data.aws_vpc.default.id
+# ----------------------------
+# Security Group
+# ----------------------------
+resource "aws_security_group" "web_sg" {
+  name        = "web-security-group"
+  description = "Allow dynamic ports"
 
+  # Create rules dynamically for each port
   dynamic "ingress" {
     for_each = var.allowed_ports
+
     content {
+      description = "Allow port ${ingress.value}"
       from_port   = ingress.value
       to_port     = ingress.value
       protocol    = "tcp"
@@ -16,16 +19,8 @@ resource "aws_security_group" "my_sg" {
     }
   }
 
-  ingress {
-    description = "Allow ICMP ping"
-    from_port   = -1
-    to_port     = -1
-    protocol    = "icmp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
+  # Allow all outbound
   egress {
-    description = "Allow all outbound"
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
