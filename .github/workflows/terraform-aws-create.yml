@@ -56,11 +56,12 @@ jobs:
 
         for ip in $IPS
         do
-          echo "$ip ansible_user=ubuntu ansible_ssh_private_key_file=key1.pem" >> ../ansible/hosts
+          echo "$ip ansible_user=ubuntu ansible_ssh_private_key_file=key1.pem ansible_ssh_common_args='-o StrictHostKeyChecking=no'" >> ../ansible/hosts
         done
 
         echo "Generated inventory:"
         cat ../ansible/hosts
+
 
 
     # Create SSH key
