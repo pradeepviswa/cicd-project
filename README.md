@@ -5,13 +5,15 @@
 ```
 bucket name: my-tf-bucket-1726"
 ```
-
-## folder structure
+# update terraform terraform/terraform.tfvars
 ```
-terraform/create_vm
- ├── main.tf
- ├── variables.tf
- ├── backend.tf   ← S3 config
+# default values
+instance_type = "t3.micro"
+vm_count = 1
+key_name = "key1"
+allowed_ports = [22,80]
+```
+
 ```
 
 ## udpate terraform/backend.tf. Update bucket name as per actual
