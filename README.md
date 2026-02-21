@@ -34,4 +34,5 @@ terraform {
 | **Key type**      | String                           |
 | **Region**        | Same as S3 bucket (`ap-south-1`) |
 
-![alt text](image.png)
+<img width="1087" height="569" alt="image" src="https://github.com/user-attachments/assets/d6b13385-6c68-471c-bfa5-fe681b27389a" />
+
