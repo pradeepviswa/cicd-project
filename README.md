@@ -14,8 +14,6 @@ key_name = "key1"
 allowed_ports = [22,80]
 ```
 
-```
-
 ## udpate terraform/backend.tf. Update bucket name as per actual
 ```
 terraform {
