@@ -1,18 +1,20 @@
 # manual steps
 
 
-## create S3 bucket
+## create S3 bucket, basic default settings will work
 ```
 bucket name: my-tf-bucket-1726"
 ```
 
 ## folder structure
+```
 terraform/create_vm
  ├── main.tf
  ├── variables.tf
  ├── backend.tf   ← S3 config
+```
 
-## create backend.tf
+## udpate terraform/backend.tf. Update bucket name as per actual
 ```
 terraform {
   backend "s3" {
